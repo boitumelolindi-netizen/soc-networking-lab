@@ -52,3 +52,32 @@ Understanding network configuration helps a SOC analyst determine whether an IP 
 This documentation excludes MAC addresses, public IP addresses, passwords, and other unnecessary identifying information.
 
 All future scanning exercises will be restricted to authorised lab systems.
+
+## 7. Host-Only Network Connectivity Test
+
+### Test setup
+
+The Windows host-only adapter uses IPv4 address `192.168.56.1/24`. The Kali Linux host-only interface, `eth1`, uses IPv4 address `192.168.56.103/24`.
+
+### Test performed
+
+From Windows Command Prompt, I ran:
+
+`ping 192.168.56.103`
+
+### Results
+
+* Four ICMP echo requests were sent.
+* Four replies were received.
+* Packet loss was 0%.
+* The displayed round-trip time was less than one millisecond.
+
+### Conclusion
+
+The test confirms that the Windows host can communicate with the Kali Linux VM over the VirtualBox host-only network using ICMP.
+
+A separate ping test from Kali to Windows received no replies. The reason has not yet been confirmed and requires further investigation.
+
+### Security relevance
+
+Connectivity testing helps verify that a lab network is functioning as expected before conducting authorised security exercises.
